@@ -1,0 +1,12 @@
+[Default]
+listen=<%= @runstatedir %>/gridinit.sock
+pidfile=<%= @runstatedir %>/gridinit.pid
+uid=root
+gid=root
+working_dir=<%= @runstatedir %>
+
+limit.core_size=-1
+limit.max_files=8192
+limit.stack_size=256
+
+include=<%= @sysconfdird %>/*

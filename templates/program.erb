@@ -1,0 +1,22 @@
+[Service.<%= @title %>]
+command=<%= @command %>
+enabled=<%= @enabled %>
+start_at_boot=<%= @start_at_boot %>
+on_die=<%= @on_die %>
+group=<%= @group %>
+<% if not(@uid == nil) -%>
+uid=<%= @uid %>
+<% end -%>
+<% if not(@gid == nil) -%>
+gid=<%= @gid %>
+<% end -%>
+<% if not(@max_files == nil) -%>
+limit.max_files=<%= @options["max_files"] %>
+<% end -%>
+env.PATH=<%= @env_path %>
+<% if not(@environment == nil) -%>
+<% @environment.split(/\s(?=(?:[^"]|"[^"]*")*$)/).each do |item| -%>
+<% myvar, myval = item.split('=') -%>
+env.<%= myvar %>=<%= myval.gsub(/\A"|"\Z/,'') %>
+<% end -%>
+<% end -%>
