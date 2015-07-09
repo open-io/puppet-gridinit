@@ -10,7 +10,8 @@ class gridinit::service inherits gridinit {
       ensure     => $gridinit::service_ensure,
       enable     => true,
       hasrestart => true,
-      hasstatus  => true
+      hasstatus  => true,
+      require    => Package[$gridinit::packages_names],
     }
   }
 
