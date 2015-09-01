@@ -23,31 +23,28 @@ define gridinit::program(
     }
   }
 
-  # Validation here
-
-#  class {'::gridinit': service => "${name}"}
+  # Should have validation here
 
   unless $no_exec {
-    $file_notify = [Exec['gridinitctl_reload'],Exec["${name}"]]
+    $file_notify = [Exec['gridinitctl_reload'],Exec[$name]]
   }
 
   # Config file
   file { "${gridinit::sysconfdird}/${name}":
-    path    => "${gridinit::sysconfdird}/${name}",
-    ensure  => $file_ensure,
-    content => template("gridinit/program.erb"),
-    owner   => "${gridinit::user}",
-    group   => "${gridinit::group}",
-    mode    => "${gridinit::file_mode}",
-    notify  => $file_notify,
+    ensure  => $gridinit::file_ensure,
+    content => template('gridinit/program.erb'),
+    owner   => $gridinit::user,
+    group   => $gridinit::group,
+    mode    => $gridinit::file_mode,
+    notify  => $gridinit::file_notify,
   }
 
   unless $no_exec {
     # Start and restart program
-    exec { "${name}":
-      command     => "${gridinit::exec_ctl} start ${name}",
-      refresh     => "${gridinit::exec_ctl} restart ${name}",
-      require     => Exec['gridinitctl_reload'],
+    exec { $name:
+      command => "${gridinit::exec_ctl} start ${name}",
+      refresh => "${gridinit::exec_ctl} restart ${name}",
+      require => Exec['gridinitctl_reload'],
     }
   }
 

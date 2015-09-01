@@ -4,7 +4,6 @@
 #
 class gridinit::service inherits gridinit {
 
-
   unless $no_exec {
     service { $gridinit::service_name:
       ensure     => $gridinit::service_ensure,

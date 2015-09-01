@@ -11,7 +11,7 @@ class gridinit::params {
     defaults: { $libdir     = "${prefixdir}/lib" }
   }
   $bindir                   = "${prefixdir}/bin"
-  $sysconfdir               = "/etc"
+  $sysconfdir               = '/etc'
   $sysconfdird              = "/etc/${project_name}.d"
   $localstatedir            = '/var'
   $runstatedir              = '/run/gridinit'
