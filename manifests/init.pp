@@ -76,7 +76,7 @@ class gridinit(
   $programs                 = {},
 ) inherits gridinit::params {
 
-  # Validation
+  # Should have some validation here
 
   create_resources('gridinit::program', $programs)
 

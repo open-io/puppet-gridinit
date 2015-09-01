@@ -1,11 +1,11 @@
 class gridinit::install inherits gridinit {
-   # User
+#   # User
 #  user { $gridinit::user:
 #    ensure => $gridinit::user_ensure,
 #    uid     => $gridinit::uid,
 #    require => Group[$gridinit::group],
 #  }
-  # Group
+#  # Group
 #  group { $gridinit::group:
 #    ensure => $gridinit::group_ensure,
 #    gid    => $gridinit::gid,
@@ -15,6 +15,6 @@ class gridinit::install inherits gridinit {
     ensure        => $gridinit::package_ensure,
     provider      => $gridinit::package_provider,
     allow_virtual => false,
-  } 
+  }
 
 }

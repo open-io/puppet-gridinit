@@ -6,9 +6,9 @@ class gridinit::params {
   $project_name             = 'gridinit'
   # Path
   $prefixdir                = '/usr'
-  case $::osfamily {
+  case $::architecture {
     'x86_64': { $libdir     = "${prefixdir}/lib64" }
-    defaults: { $libdir     = "${prefixdir}/lib" }
+    default:  { $libdir     = "${prefixdir}/lib" }
   }
   $bindir                   = "${prefixdir}/bin"
   $sysconfdir               = '/etc'

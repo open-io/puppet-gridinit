@@ -1,7 +1,7 @@
 class gridinit::config inherits gridinit {
 
   # Path
-  $required_path = [$sysconfdird,$spoolstatedir,$sharedstatedir,$logdir]
+  $required_path = [$gridinit::sysconfdird,$gridinit::spoolstatedir,$gridinit::sharedstatedir,$gridinit::logdir]
     file { $required_path:
       ensure => $gridinit::directory_ensure,
       owner  => $gridinit::user,
