@@ -6,9 +6,21 @@ class gridinit::params {
   $project_name             = 'gridinit'
   # Path
   $prefixdir                = '/usr'
-  case $::architecture {
-    'x86_64': { $libdir     = "${prefixdir}/lib64" }
-    default:  { $libdir     = "${prefixdir}/lib" }
+  case $::osfamily {
+    'Debian': {
+      $libdir               = "${prefixdir}/lib"
+      $package_provider     = 'apt'
+      $packages_names       = ['openio-gridinit']
+    }
+    'RedHat': {
+      case $::architecture {
+        'x86_64': { $libdir = "${prefixdir}/lib64" }
+        default:  { $libdir = "${prefixdir}/lib" }
+      }
+      $package_provider     = 'yum'
+      $packages_names       = ['openio-gridinit','openio-gridinit-utils']
+    }
+    default: { fail("osfamily $::osfamily not supported.") }
   }
   $bindir                   = "${prefixdir}/bin"
   $sysconfdir               = '/etc'
@@ -28,8 +40,6 @@ class gridinit::params {
   $gid                      = '0'
   # Packages
   $package_ensure           = 'installed'
-  $package_provider         = 'yum'
-  $packages_names           = ['openio-gridinit','openio-gridinit-utils']
   # Logging
   $logfile_maxbytes         = '50MB'
   $logfile_backups          = '14'
