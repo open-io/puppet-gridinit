@@ -8,17 +8,19 @@ class gridinit::params {
   $prefixdir                = '/usr'
   case $::osfamily {
     'Debian': {
-      $libdir               = "${prefixdir}/lib"
-      $package_provider     = 'apt'
-      $packages_names       = ['openio-gridinit']
+      $libdir                  = "${prefixdir}/lib"
+      $package_provider        = 'apt'
+      $packages_names          = ['openio-gridinit']
+      $package_install_options = '--force-yes'
     }
     'RedHat': {
       case $::architecture {
         'x86_64': { $libdir = "${prefixdir}/lib64" }
         default:  { $libdir = "${prefixdir}/lib" }
       }
-      $package_provider     = 'yum'
-      $packages_names       = ['openio-gridinit','openio-gridinit-utils']
+      $package_provider        = 'yum'
+      $packages_names          = ['openio-gridinit','openio-gridinit-utils']
+      $package_install_options = ''
     }
     default: { fail("osfamily $::osfamily not supported.") }
   }
