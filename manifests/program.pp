@@ -36,7 +36,7 @@ define gridinit::program(
     owner   => $gridinit::user,
     group   => $gridinit::group,
     mode    => $gridinit::file_mode,
-    notify  => $gridinit::file_notify,
+    notify  => $file_notify,
   }
 
   unless $no_exec {
