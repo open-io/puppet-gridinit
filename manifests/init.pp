@@ -56,7 +56,6 @@ class gridinit(
   $group_ensure             = $gridinit::params::group_ensure,
   $gid                      = $gridinit::params::gid,
   $package_ensure           = $gridinit::params::package_ensure,
-  $package_provider         = $gridinit::params::package_provider,
   $packages_names           = $gridinit::params::packages_names,
   $logfile_maxbytes         = $gridinit::params::logfile_maxbytes,
   $logfile_backups          = $gridinit::params::logfile_backups,
