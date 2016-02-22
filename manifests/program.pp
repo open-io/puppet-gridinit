@@ -14,6 +14,7 @@ define gridinit::program(
   $uid           = undef,
   $gid           = undef,
   $env_path      = '/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin',
+  $limit         = {},
   $no_exec       = false,
 ) {
 
