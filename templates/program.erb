@@ -13,6 +13,11 @@ gid=<%= @gid %>
 <% if not(@max_files == nil) -%>
 limit.max_files=<%= @options["max_files"] %>
 <% end -%>
+<% if @limit -%>
+<% @limit.each_pair do |k, v| -%>
+limit.<%= k %>=<%= v %>
+<% end -%>
+<% end -%>
 env.PATH=<%= @env_path %>
 <% if not(@environment == nil) -%>
 <% @environment.split(/\s(?=(?:[^"]|"[^"]*")*$)/).each do |item| -%>

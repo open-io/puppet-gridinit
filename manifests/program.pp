@@ -14,6 +14,7 @@ define gridinit::program(
   $uid           = undef,
   $gid           = undef,
   $env_path      = '/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin',
+  $limit         = {},
   $no_exec       = false,
 ) {
 
@@ -24,6 +25,19 @@ define gridinit::program(
   }
 
   # Should have validation here
+  validate_string($command)
+  validate_bool($enabled)
+  $valid_start_at_boot = ['yes','no']
+  validate_re($start_at_boot,$valid_start_at_boot,"${start_at_boot} is invalid.")
+  $valid_on_die = ['cry','respawn','exit']
+  validate_re($on_die,$valid_on_die,"${on_die} is invalid.")
+  validate_string($group)
+  validate_string($environment)
+  validate_string($uid)
+  validate_string($gid)
+  validate_string($env_path)
+  validate_hash($limit)
+  validate_bool($no_exec)
 
   unless $no_exec {
     $file_notify = [Exec['gridinitctl_reload'],Exec[$name]]

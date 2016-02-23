@@ -76,6 +76,29 @@ class gridinit(
 ) inherits gridinit::params {
 
   # Should have some validation here
+  validate_string($project_name)
+  validate_absolute_path($prefixdir)
+  validate_absolute_path($libdir)
+  validate_absolute_path($bindir)
+  validate_absolute_path($sysconfdir)
+  validate_absolute_path($sysconfdird)
+  validate_absolute_path($localstatedir)
+  validate_absolute_path($runstatedir)
+  validate_absolute_path($spoolstatedir)
+  validate_absolute_path($sharedstatedir)
+  validate_absolute_path($logdir)
+  validate_string($exec_ctl)
+  validate_string($user)
+  $valid_user_ensure = ['present','absent','role']
+  validate_re($user_ensure,$valid_user_ensure,"${user_ensure} is invalid.")
+  if type3x($uid) != 'integer' { fail("${uid} is not an integer.") }
+  validate_string($group)
+  $valid_group_ensure = ['present','absent']
+  validate_re($group_ensure,$valid_group_ensure,"${group_ensure} is invalid.")
+  if type3x($gid) != 'integer' { fail("${gid} is not an integer.") }
+  $valid_package_ensure = ['present','installed','absent','purged','held','latest']
+  validate_re($package_ensure,$valid_package_ensure,"${package_ensure} is invalid.")
+  #validate_array($package_names)
 
   create_resources('gridinit::program', $programs)
 
