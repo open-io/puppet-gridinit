@@ -1,6 +1,6 @@
 {
   "name": "openio-gridinit",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Romain Acciari",
   "summary": "Puppet module for gridinit from OpenIO",
   "license": "Apache-2.0",
@@ -16,9 +16,17 @@
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [ "7" ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [ "8" ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "14.04" ]
     }
   ],
   "dependencies": [
-    { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.4.0 <5.0.0" }
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 4.6.0 <5.0.0" }
   ]
 }

@@ -13,7 +13,6 @@ class gridinit::install inherits gridinit {
 
   package { $gridinit::packages_names:
     ensure          => $gridinit::package_ensure,
-    provider        => $gridinit::package_provider,
     allow_virtual   => false,
     install_options => $package_install_options,
   }
