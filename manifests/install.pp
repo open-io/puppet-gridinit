@@ -14,7 +14,7 @@ class gridinit::install inherits gridinit {
   package { $gridinit::packages_names:
     ensure          => $gridinit::package_ensure,
     allow_virtual   => false,
-    install_options => $package_install_options,
+    install_options => $gridinit::package_install_options,
   }
 
 }

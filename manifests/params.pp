@@ -20,7 +20,7 @@ class gridinit::params {
       $packages_names          = ['openio-gridinit','openio-gridinit-utils']
       $package_install_options = undef
     }
-    default: { fail("osfamily $::osfamily not supported.") }
+    default: { fail("osfamily ${::osfamily} not supported.") }
   }
   $bindir                   = "${prefixdir}/bin"
   $sysconfdir               = '/etc'
