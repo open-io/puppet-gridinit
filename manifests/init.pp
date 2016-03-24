@@ -70,6 +70,9 @@ class gridinit(
   $file_ensure              = $gridinit::params::file_ensure,
   $directory_mode           = $gridinit::params::directory_mode,
   $directory_ensure         = $gridinit::params::directory_ensure,
+  $limit_core_size          = $gridinit::params::limit_core_size,
+  $limit_max_files          = $gridinit::params::limit_max_files,
+  $limit_stack_size         = $gridinit::params::limit_stack_size,
   $no_exec                  = $gridinit::params::no_exec,
 
   $programs                 = {},
