@@ -1,12 +1,12 @@
 [Default]
 listen=<%= @runstatedir %>/gridinit.sock
 pidfile=<%= @runstatedir %>/gridinit.pid
-uid=root
-gid=root
+uid=<%= scope['gridinit::user'] %>
+gid=<%= scope['gridinit::group'] %>
 working_dir=<%= @runstatedir %>
 
-limit.core_size=-1
-limit.max_files=8192
-limit.stack_size=256
+limit.core_size=<%= @limit_core_size %>
+limit.max_files=<%= @limit_max_files %>
+limit.stack_size=<%= @limit_stack_size %>
 
 include=<%= @sysconfdird %>/*
