@@ -59,9 +59,9 @@ class gridinit::params {
   $directory_mode           = '0755'
   $directory_ensure         = 'directory'
   # Global parameters
-  $limit_core_size          = '-1'
-  $limit_max_files          = '8192'
-  $limit_stack_size         = '256'
+  $limit_core_size          = '0'
+  $limit_max_files          = '65536'
+  $limit_stack_size         = '8192'
   # Others
   $no_exec                  = false
 }

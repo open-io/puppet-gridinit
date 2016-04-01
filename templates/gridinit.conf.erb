@@ -5,8 +5,14 @@ uid=<%= scope['gridinit::user'] %>
 gid=<%= scope['gridinit::group'] %>
 working_dir=<%= @runstatedir %>
 
+<% if @limit_core_size -%>
 limit.core_size=<%= @limit_core_size %>
+<% end -%>
+<% if @limit_max_files -%>
 limit.max_files=<%= @limit_max_files %>
+<% end -%>
+<% if @limit_stack_size -%>
 limit.stack_size=<%= @limit_stack_size %>
+<% end -%>
 
 include=<%= @sysconfdird %>/*
