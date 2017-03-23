@@ -4,7 +4,12 @@
 #
 class gridinit::reload inherits gridinit {
 
-  unless $gridinit::no_exec {
+  if $::gridinit::no_exec {
+    exec { 'gridinitctl_reload':
+      command => '/usr/bin/true',
+    }
+  }
+  else {
     exec { 'gridinitctl_reload':
       command => "/bin/sleep 1 ; ${gridinit::exec_ctl} reload",
       require => Service[$gridinit::service_name],
