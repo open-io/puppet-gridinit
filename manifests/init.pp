@@ -73,6 +73,7 @@ class gridinit(
   $limit_core_size          = $gridinit::params::limit_core_size,
   $limit_max_files          = $gridinit::params::limit_max_files,
   $limit_stack_size         = $gridinit::params::limit_stack_size,
+  $command_true             = $gridinit::params::command_true,
   $no_exec                  = $gridinit::params::no_exec,
 
   $programs                 = {},
