@@ -53,7 +53,12 @@ define gridinit::program(
     notify  => $file_notify,
   }
 
-  unless $no_exec {
+  if $::gridinit::no_exec {
+    exec { 'gridinitctl_reload':
+      command => $::gridinit::command_true,
+    }
+  }
+  else {
     # Start and restart program
     exec { $name:
       command => "${gridinit::exec_ctl} start ${name}",
