@@ -6,7 +6,7 @@ class gridinit::reload inherits gridinit {
 
   if $::gridinit::no_exec {
     exec { 'gridinitctl_reload':
-      command => '/usr/bin/true',
+      command => $::gridinit::command_true,
     }
   }
   else {

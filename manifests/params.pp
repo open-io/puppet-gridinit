@@ -11,6 +11,7 @@ class gridinit::params {
       $libdir                  = "${prefixdir}/lib"
       $packages_names          = ['openio-gridinit']
       $package_install_options = '--force-yes'
+      $command_true = '/bin/true'
     }
     'RedHat': {
       case $::architecture {
@@ -19,6 +20,7 @@ class gridinit::params {
       }
       $packages_names          = ['openio-gridinit','openio-gridinit-utils']
       $package_install_options = undef
+      $command_true = '/usr/bin/true'
     }
     default: { fail("osfamily ${::osfamily} not supported.") }
   }
