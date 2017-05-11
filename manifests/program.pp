@@ -39,7 +39,7 @@ define gridinit::program(
   validate_hash($limit)
   validate_bool($no_exec)
 
-  unless $no_exec {
+  unless $::gridinit::no_exec {
     $file_notify = [Exec['gridinitctl_reload'],Exec[$name]]
   }
 
@@ -53,12 +53,7 @@ define gridinit::program(
     notify  => $file_notify,
   }
 
-  if $::gridinit::no_exec {
-    exec { 'gridinitctl_reload':
-      command => $::gridinit::command_true,
-    }
-  }
-  else {
+  unless $::gridinit::no_exec {
     # Start and restart program
     exec { $name:
       command => "${gridinit::exec_ctl} start ${name}",
@@ -66,5 +61,4 @@ define gridinit::program(
       require => Exec['gridinitctl_reload'],
     }
   }
-
 }
